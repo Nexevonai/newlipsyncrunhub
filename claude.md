@@ -10,7 +10,7 @@ This project runs **WanVideo 2.1 InfiniteTalk** on RunPod serverless infrastruct
 - **Date Modified**: 2025-11-08
 
 ---
-
+s
 ## How It Works
 
 ### Architecture
