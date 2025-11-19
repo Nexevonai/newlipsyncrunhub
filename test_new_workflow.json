@@ -1,0 +1,534 @@
+{
+  "239": {
+    "inputs": {},
+    "class_type": "MarkdownNote",
+    "_meta": {
+      "title": "Model links"
+    }
+  },
+  "307": {
+    "inputs": {
+      "image": [
+        "284",
+        0
+      ],
+      "scale_to_length": [
+        "312",
+        0
+      ],
+      "aspect_ratio": "original",
+      "proportional_width": 1,
+      "proportional_height": 1,
+      "fit": "crop",
+      "method": "lanczos",
+      "round_to_multiple": "16",
+      "scale_to_side": "longest",
+      "background_color": "#000000"
+    },
+    "class_type": "LayerUtility: ImageScaleByAspectRatio V2",
+    "_meta": {
+      "title": "LayerUtility: ImageScaleByAspectRatio V2"
+    }
+  },
+  "306": {
+    "inputs": {
+      "model_name": "umt5-xxl-enc-bf16.safetensors",
+      "precision": "bf16",
+      "load_device": "offload_device",
+      "quantization": "disabled"
+    },
+    "class_type": "LoadWanVideoT5TextEncoder",
+    "_meta": {
+      "title": "LoadWanVideoT5TextEncoder"
+    }
+  },
+  "238": {
+    "inputs": {
+      "clip_name": "clip_vision_h.safetensors"
+    },
+    "class_type": "CLIPVisionLoader",
+    "_meta": {
+      "title": "CLIPVisionLoader"
+    }
+  },
+  "293": {
+    "inputs": {
+      "source": [
+        "194",
+        2
+      ]
+    },
+    "class_type": "PreviewAny",
+    "_meta": {
+      "title": "PreviewAny"
+    }
+  },
+  "129": {
+    "inputs": {
+      "model_name": "Wan2_1_VAE_bf16.safetensors",
+      "precision": "bf16"
+    },
+    "class_type": "WanVideoVAELoader",
+    "_meta": {
+      "title": "WanVideoVAELoader"
+    }
+  },
+  "237": {
+    "inputs": {
+      "clip_vision": [
+        "238",
+        0
+      ],
+      "image_1": [
+        "291",
+        0
+      ],
+      "strength_1": 1,
+      "strength_2": 1,
+      "crop": "center",
+      "combine_embeds": "average",
+      "force_offload": true,
+      "tiles": 0,
+      "ratio": 0.5
+    },
+    "class_type": "WanVideoClipVisionEncode",
+    "_meta": {
+      "title": "WanVideoClipVisionEncode"
+    }
+  },
+  "311": {
+    "inputs": {},
+    "class_type": "Note",
+    "_meta": {
+      "title": "Note"
+    }
+  },
+  "313": {
+    "inputs": {},
+    "class_type": "Note",
+    "_meta": {
+      "title": "Note"
+    }
+  },
+  "309": {
+    "inputs": {},
+    "class_type": "Note",
+    "_meta": {
+      "title": "Note"
+    }
+  },
+  "315": {
+    "inputs": {},
+    "class_type": "Note",
+    "_meta": {
+      "title": "Note"
+    }
+  },
+  "310": {
+    "inputs": {},
+    "class_type": "Note",
+    "_meta": {
+      "title": "Note"
+    }
+  },
+  "170": {
+    "inputs": {
+      "audio": [
+        "159",
+        0
+      ],
+      "chunk_fade_shape": "linear",
+      "chunk_length": 10,
+      "chunk_overlap": 0.1
+    },
+    "class_type": "AudioSeparation",
+    "_meta": {
+      "title": "AudioSeparation"
+    }
+  },
+  "137": {
+    "inputs": {
+      "model": "TencentGameMate/chinese-wav2vec2-base",
+      "base_precision": "fp16",
+      "load_device": "main_device"
+    },
+    "class_type": "DownloadAndLoadWav2VecModel",
+    "_meta": {
+      "title": "DownloadAndLoadWav2VecModel"
+    }
+  },
+  "291": {
+    "inputs": {
+      "image": [
+        "307",
+        0
+      ]
+    },
+    "class_type": "GetImageSizeAndCount",
+    "_meta": {
+      "title": "GetImageSizeAndCount"
+    }
+  },
+  "299": {
+    "inputs": {},
+    "class_type": "Note",
+    "_meta": {
+      "title": "Note"
+    }
+  },
+  "122": {
+    "inputs": {
+      "block_swap_args": [
+        "316",
+        0
+      ],
+      "lora": [
+        "138",
+        0
+      ],
+      "multitalk_model": [
+        "120",
+        0
+      ],
+      "model": "aniWan2114BFp8E4m3fn_i2v480pNew.safetensors",
+      "base_precision": "fp16_fast",
+      "quantization": "disabled",
+      "load_device": "offload_device",
+      "attention_mode": "sageattn",
+      "rms_norm_function": "default"
+    },
+    "class_type": "WanVideoModelLoader",
+    "_meta": {
+      "title": "WanVideoModelLoader"
+    }
+  },
+  "305": {
+    "inputs": {
+      "t5": [
+        "306",
+        0
+      ],
+      "positive_prompt": [
+        "314",
+        0
+      ],
+      "negative_prompt": "\u660e\u4eae\u7684\u8272\u8c03\u3001\u66dd\u5149\u8fc7\u5ea6\u3001\u9759\u6b62\u3001\u6a21\u7cca\u7684\u7ec6\u8282\u3001\u5b57\u5e55\u3001\u98ce\u683c\u3001\u4f5c\u54c1\u3001\u753b\u4f5c\u3001\u56fe\u50cf\u3001\u9759\u6b62\u7684\u7269\u4f53\u3001\u6574\u4f53\u5448\u7070\u8272\u3001\u8d28\u91cf\u6700\u5dee\u3001\u8d28\u91cf\u4f4e\u4e0b\u3001JPEG \u538b\u7f29\u6b8b\u7559\u3001\u96be\u770b\u3001\u4e0d\u5b8c\u6574\u3001\u591a\u51fa\u7684\u624b\u6307\u3001\u753b\u5f97\u7cdf\u7cd5\u7684\u624b\u90e8\u3001\u753b\u5f97\u7cdf\u7cd5\u7684\u9762\u90e8\u3001\u53d8\u5f62\u3001\u7578\u5f62\u3001\u5f62\u72b6\u4e0d\u89c4\u5219\u7684\u80a2\u4f53\u3001\u878d\u5408\u7684\u624b\u6307\u3001\u9759\u6001\u56fe\u7247\u3001\u6742\u4e71\u7684\u80cc\u666f\u3001\u4e09\u53ea\u817f\u3001\u80cc\u666f\u4e2d\u6709\u8bb8\u591a\u4eba",
+      "force_offload": true,
+      "use_disk_cache": false,
+      "device": "gpu"
+    },
+    "class_type": "WanVideoTextEncode",
+    "_meta": {
+      "title": "WanVideoTextEncode"
+    }
+  },
+  "128": {
+    "inputs": {
+      "model": [
+        "122",
+        0
+      ],
+      "image_embeds": [
+        "192",
+        0
+      ],
+      "text_embeds": [
+        "305",
+        0
+      ],
+      "multitalk_embeds": [
+        "194",
+        0
+      ],
+      "steps": 4,
+      "cfg": 1.0000000000000002,
+      "shift": 11.000000000000002,
+      "seed": 857465038123108,
+      "force_offload": true,
+      "scheduler": "dpm++",
+      "riflex_freq_index": 0,
+      "denoise_strength": 1,
+      "batched_cfg": false,
+      "rope_function": "comfy",
+      "start_step": 0,
+      "end_step": -1,
+      "add_noise_to_samples": true
+    },
+    "class_type": "WanVideoSampler",
+    "_meta": {
+      "title": "WanVideoSampler"
+    }
+  },
+  "192": {
+    "inputs": {
+      "vae": [
+        "129",
+        0
+      ],
+      "start_image": [
+        "291",
+        0
+      ],
+      "clip_embeds": [
+        "237",
+        0
+      ],
+      "width": [
+        "291",
+        1
+      ],
+      "height": [
+        "291",
+        2
+      ],
+      "frame_window_size": 81,
+      "motion_frame": 9,
+      "force_offload": false,
+      "colormatch": "disabled",
+      "tiled_vae": false,
+      "mode": "infinitetalk",
+      "output_path": ""
+    },
+    "class_type": "WanVideoImageToVideoMultiTalk",
+    "_meta": {
+      "title": "WanVideoImageToVideoMultiTalk"
+    }
+  },
+  "138": {
+    "inputs": {
+      "prev_lora": [
+        "318",
+        0
+      ],
+      "lora": "Wan21_I2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors",
+      "strength": 1,
+      "low_mem_load": false,
+      "merge_loras": false
+    },
+    "class_type": "WanVideoLoraSelect",
+    "_meta": {
+      "title": "WanVideoLoraSelect"
+    }
+  },
+  "318": {
+    "inputs": {
+      "strength": [
+        "340",
+        0
+      ],
+      "lora": "Wan_2_1_T2V_14B_rCM_lora_average_rank_83_bf16.safetensors",
+      "low_mem_load": false,
+      "merge_loras": false
+    },
+    "class_type": "WanVideoLoraSelect",
+    "_meta": {
+      "title": "WanVideoLoraSelect"
+    }
+  },
+  "120": {
+    "inputs": {
+      "model": "InfiniteTalk/Wan2_1-InfiniTetalk-Single_fp16.safetensors"
+    },
+    "class_type": "MultiTalkModelLoader",
+    "_meta": {
+      "title": "MultiTalkModelLoader"
+    }
+  },
+  "340": {
+    "inputs": {
+      "value": 0.30000000000000004
+    },
+    "class_type": "JWFloat",
+    "_meta": {
+      "title": "JWFloat"
+    }
+  },
+  "194": {
+    "inputs": {
+      "wav2vec_model": [
+        "137",
+        0
+      ],
+      "audio_1": [
+        "170",
+        3
+      ],
+      "num_frames": [
+        "308",
+        0
+      ],
+      "normalize_loudness": true,
+      "fps": 25,
+      "audio_scale": 1,
+      "audio_cfg_scale": 1,
+      "multi_audio_type": "para"
+    },
+    "class_type": "MultiTalkWav2VecEmbeds",
+    "_meta": {
+      "title": "MultiTalkWav2VecEmbeds"
+    }
+  },
+  "314": {
+    "inputs": {
+      "prompt": "\u5979\u5411\u89c2\u4f17\u8bf4\u8bdd\u3002|"
+    },
+    "class_type": "CR Prompt Text",
+    "_meta": {
+      "title": "CR Prompt Text"
+    }
+  },
+  "130": {
+    "inputs": {
+      "vae": [
+        "129",
+        0
+      ],
+      "samples": [
+        "128",
+        0
+      ],
+      "enable_vae_tiling": false,
+      "tile_x": 272,
+      "tile_y": 272,
+      "tile_stride_x": 144,
+      "tile_stride_y": 128,
+      "normalization": "default"
+    },
+    "class_type": "WanVideoDecode",
+    "_meta": {
+      "title": "WanVideoDecode"
+    }
+  },
+  "159": {
+    "inputs": {
+      "audio": [
+        "125",
+        0
+      ],
+      "start_time": "0:00",
+      "end_time": "1:52"
+    },
+    "class_type": "AudioCrop",
+    "_meta": {
+      "title": "AudioCrop"
+    }
+  },
+  "316": {
+    "inputs": {
+      "blocks_to_swap": 20,
+      "offload_img_emb": false,
+      "offload_txt_emb": false,
+      "use_non_blocking": false,
+      "vace_blocks_to_swap": 0,
+      "prefetch_blocks": 0,
+      "block_swap_debug": false
+    },
+    "class_type": "WanVideoBlockSwap",
+    "_meta": {
+      "title": "WanVideoBlockSwap"
+    }
+  },
+  "385": {
+    "inputs": {
+      "images": [
+        "130",
+        0
+      ],
+      "audio": [
+        "389",
+        0
+      ],
+      "save_output": true,
+      "filename_prefix": "WanVideo2_1_InfiniteTalk",
+      "loop_count": 0,
+      "pix_fmt": "yuv420p",
+      "save_metadata": true,
+      "crf": 19,
+      "trim_to_audio": false,
+      "format": "video/h264-mp4",
+      "no_preview": false,
+      "frame_rate": 25,
+      "pingpong": false
+    },
+    "class_type": "VHS_VideoCombine",
+    "_meta": {
+      "title": "VHS_VideoCombine"
+    }
+  },
+  "389": {
+    "inputs": {
+      "": [
+        "159",
+        0
+      ]
+    },
+    "class_type": "Reroute",
+    "_meta": {
+      "title": "Reroute"
+    }
+  },
+  "384": {
+    "inputs": {
+      "images": [
+        "130",
+        0
+      ],
+      "audio": [
+        "389",
+        0
+      ],
+      "save_output": false,
+      "filename_prefix": "WanVideo2_1_InfiniteTalk",
+      "loop_count": 0,
+      "pix_fmt": "yuv420p",
+      "save_metadata": true,
+      "crf": 19,
+      "trim_to_audio": false,
+      "format": "video/h264-mp4",
+      "no_preview": false,
+      "frame_rate": 25,
+      "pingpong": false
+    },
+    "class_type": "VHS_VideoCombine",
+    "_meta": {
+      "title": "VHS_VideoCombine"
+    }
+  },
+  "312": {
+    "inputs": {
+      "value": 1280
+    },
+    "class_type": "JWInteger",
+    "_meta": {
+      "title": "JWInteger"
+    }
+  },
+  "125": {
+    "inputs": {
+      "audio": "5f3b8311a0463911eef41961352d568c0d8af61854ddc6a7b89e866abea1b618.flac"
+    },
+    "class_type": "LoadAudio",
+    "_meta": {
+      "title": "LoadAudio"
+    }
+  },
+  "308": {
+    "inputs": {
+      "value": 475
+    },
+    "class_type": "JWInteger",
+    "_meta": {
+      "title": "JWInteger"
+    }
+  },
+  "284": {
+    "inputs": {
+      "image": "100b83cd0c049127a89eab01e7695c9b510cc457c81269bc340ff4567eba7c05.png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "LoadImage"
+    }
+  }
+}

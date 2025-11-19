@@ -1,0 +1,37 @@
+{
+  "2": {
+    "inputs": {
+      "audio": "Donald Trump voice.mp3.mp3",
+      "audioUI": ""
+    },
+    "class_type": "LoadAudio",
+    "_meta": {
+      "title": "LoadAudio"
+    }
+  },
+  "7": {
+    "inputs": {
+      "UNKNOWN": 1,
+      "speaker1_voice": [
+        "2",
+        0
+      ]
+    },
+    "_meta": {}
+  },
+  "11": {
+    "inputs": {
+      "filename_prefix": "audio/ComfyUI",
+      "quality": "320k",
+      "audioUI": "",
+      "audio": [
+        "7",
+        0
+      ]
+    },
+    "class_type": "SaveAudioMP3",
+    "_meta": {
+      "title": "Save Audio (MP3)"
+    }
+  }
+}

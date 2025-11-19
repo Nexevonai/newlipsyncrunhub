@@ -1,0 +1,2 @@
+/root/comfy/ComfyUI/models/ultralytics/segm/person_yolov8m-seg.pt
+person_yolov8m-seg.pt

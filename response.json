@@ -1,0 +1,12 @@
+{
+  "delayTime": 180,
+  "executionTime": 65000,
+  "id": "sync-6d1e8e75-1234-5678-9abc-def012345678-e1",
+  "output": {
+    "video": [
+      "https://pub-xxxxxxxxxxxxx.r2.dev/a1b2c3d4-5678-90ab-cdef-1234567890ab_WanVideo2_1_multitalk_00001.mp4"
+    ]
+  },
+  "status": "COMPLETED",
+  "workerId": "xxxxxxxxxxxx-xxxxxxx"
+}

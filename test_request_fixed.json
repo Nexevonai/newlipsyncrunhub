@@ -1,0 +1,55 @@
+{
+  "input": {
+    "audio_url": "https://raw.githubusercontent.com/Nexevonai/infittalktest/main/man1.mp3",
+    "workflow": {
+      "2": {
+        "inputs": {
+          "audio": "placeholder_audio.mp3"
+        },
+        "class_type": "LoadAudio",
+        "_meta": {
+          "title": "LoadAudio"
+        }
+      },
+      "7": {
+        "inputs": {
+          "text": "Hello! This is a test of the Vibe Voice system. If you can hear this, it means the voice cloning is working perfectly!",
+          "model": "VibeVoice-Large",
+          "language": "auto",
+          "quantize_llm": "full precision",
+          "attention_type": "auto",
+          "use_sampling": true,
+          "seed": 45,
+          "diffusion_steps": 42,
+          "cfg_scale": 1.3,
+          "free_memory_after_generate": false,
+          "top_p": 0.95,
+          "top_k": 0.95,
+          "repetition_penalty": 1.0,
+          "speaker1_voice": [
+            "2",
+            0
+          ]
+        },
+        "class_type": "VibeVoiceMultipleSpeakersNode",
+        "_meta": {
+          "title": "Vibe Voice Multiple Speakers"
+        }
+      },
+      "11": {
+        "inputs": {
+          "filename_prefix": "audio/ComfyUI",
+          "quality": "320k",
+          "audio": [
+            "7",
+            0
+          ]
+        },
+        "class_type": "SaveAudioMP3",
+        "_meta": {
+          "title": "Save Audio (MP3)"
+        }
+      }
+    }
+  }
+}

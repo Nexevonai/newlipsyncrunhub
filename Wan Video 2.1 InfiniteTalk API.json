@@ -1,0 +1,312 @@
+{
+  "120": {
+    "inputs": {
+      "UNKNOWN": "Wan2_1-InfiniteTalk_Single_Q6_K_2.gguf"
+    },
+    "_meta": {}
+  },
+  "122": {
+    "inputs": {
+      "UNKNOWN": "sageattn",
+      "block_swap_args": [
+        "134",
+        0
+      ],
+      "lora": [
+        "138",
+        0
+      ],
+      "multitalk_model": [
+        "120",
+        0
+      ]
+    },
+    "_meta": {}
+  },
+  "129": {
+    "inputs": {
+      "UNKNOWN": "bf16"
+    },
+    "_meta": {}
+  },
+  "130": {
+    "inputs": {
+      "UNKNOWN": "default",
+      "vae": [
+        "129",
+        0
+      ],
+      "samples": [
+        "213",
+        0
+      ]
+    },
+    "_meta": {}
+  },
+  "131": {
+    "inputs": {
+      "images": [
+        "130",
+        0
+      ],
+      "audio": [
+        "159",
+        0
+      ],
+      "frame_rate": [
+        "229",
+        0
+      ]
+    },
+    "_meta": {}
+  },
+  "134": {
+    "inputs": {
+      "UNKNOWN": false
+    },
+    "_meta": {}
+  },
+  "135": {
+    "inputs": {
+      "UNKNOWN": "gpu",
+      "t5": [
+        "136",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "WanVideo Prompt"
+    }
+  },
+  "136": {
+    "inputs": {
+      "UNKNOWN": "disabled"
+    },
+    "_meta": {}
+  },
+  "137": {
+    "inputs": {
+      "UNKNOWN": "main_device"
+    },
+    "_meta": {}
+  },
+  "138": {
+    "inputs": {
+      "UNKNOWN": false
+    },
+    "_meta": {}
+  },
+  "159": {
+    "inputs": {
+      "UNKNOWN": "0:07",
+      "audio": [
+        "217",
+        0
+      ]
+    },
+    "_meta": {}
+  },
+  "170": {
+    "inputs": {
+      "UNKNOWN": 0.1,
+      "audio": [
+        "159",
+        0
+      ]
+    },
+    "_meta": {}
+  },
+  "171": {
+    "inputs": {
+      "UNKNOWN": "cpu",
+      "image": [
+        "207",
+        0
+      ],
+      "width": [
+        "210",
+        0
+      ],
+      "height": [
+        "211",
+        0
+      ]
+    },
+    "_meta": {}
+  },
+  "173": {
+    "inputs": {
+      "clip_name": "clip_vision_h.safetensors"
+    },
+    "class_type": "CLIPVisionLoader",
+    "_meta": {
+      "title": "Load CLIP Vision"
+    }
+  },
+  "177": {
+    "inputs": {
+      "UNKNOWN": 128
+    },
+    "_meta": {}
+  },
+  "192": {
+    "inputs": {
+      "UNKNOWN": "",
+      "vae": [
+        "129",
+        0
+      ],
+      "start_image": [
+        "171",
+        0
+      ],
+      "clip_embeds": [
+        "193",
+        0
+      ],
+      "width": [
+        "210",
+        0
+      ],
+      "height": [
+        "211",
+        0
+      ]
+    },
+    "_meta": {}
+  },
+  "193": {
+    "inputs": {
+      "UNKNOWN": 0.5000000000000001,
+      "clip_vision": [
+        "173",
+        0
+      ],
+      "image_1": [
+        "171",
+        0
+      ]
+    },
+    "_meta": {}
+  },
+  "194": {
+    "inputs": {
+      "UNKNOWN": "para",
+      "wav2vec_model": [
+        "137",
+        0
+      ],
+      "audio_1": [
+        "170",
+        3
+      ],
+      "num_frames": [
+        "214",
+        0
+      ],
+      "fps": [
+        "229",
+        0
+      ]
+    },
+    "_meta": {}
+  },
+  "207": {
+    "inputs": {
+      "image": "3.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "208": {
+    "inputs": {
+      "images": [
+        "171",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  },
+  "210": {
+    "inputs": {
+      "UNKNOWN": 639
+    },
+    "_meta": {
+      "title": "Width"
+    }
+  },
+  "211": {
+    "inputs": {
+      "UNKNOWN": 640
+    },
+    "_meta": {
+      "title": "Height"
+    }
+  },
+  "213": {
+    "inputs": {
+      "UNKNOWN": false,
+      "model": [
+        "122",
+        0
+      ],
+      "image_embeds": [
+        "192",
+        0
+      ],
+      "text_embeds": [
+        "135",
+        0
+      ],
+      "multitalk_embeds": [
+        "194",
+        0
+      ]
+    },
+    "_meta": {}
+  },
+  "214": {
+    "inputs": {
+      "UNKNOWN": 175
+    },
+    "_meta": {
+      "title": "Total Duration (Total Frames not seconds)"
+    }
+  },
+  "217": {
+    "inputs": {
+      "audio": "1.mp3",
+      "audioUI": ""
+    },
+    "class_type": "LoadAudio",
+    "_meta": {
+      "title": "LoadAudio"
+    }
+  },
+  "229": {
+    "inputs": {
+      "value": 25
+    },
+    "class_type": "PrimitiveFloat",
+    "_meta": {
+      "title": "Frames per second"
+    }
+  },
+  "233": {
+    "inputs": {},
+    "_meta": {
+      "title": "Jockerai"
+    }
+  },
+  "234": {
+    "inputs": {},
+    "_meta": {
+      "title": "Wan Video 2.1 InfiniteTalk"
+    }
+  }
+}
