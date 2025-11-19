@@ -63,20 +63,12 @@ RUN wget -O $COMFYUI_PATH/models/vae/Wan2_1_VAE_bf16.safetensors \
     "https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan2_1_VAE_bf16.safetensors"
 
 # Distill LoRA rank64 (Specific name for new workflow)
-RUN /venv/bin/huggingface-cli download Kijai/WanVideo_comfy \
-    Lightx2v/Wan21_I2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors \
-    --local-dir /tmp/lora_rank64_new && \
-    mv /tmp/lora_rank64_new/Lightx2v/Wan21_I2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors \
-       $COMFYUI_PATH/models/loras/Wan21_I2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors && \
-    rm -rf /tmp/lora_rank64_new
+RUN wget -O $COMFYUI_PATH/models/loras/Wan21_I2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors \
+    "https://huggingface.co/lightx2v/Wan2.1-I2V-14B-480P-StepDistill-CfgDistill-Lightx2v/resolve/main/loras/Wan21_I2V_14B_lightx2v_cfg_step_distill_lora_rank64.safetensors"
 
 # rCM LoRA (New for this workflow)
-RUN /venv/bin/huggingface-cli download Kijai/WanVideo_comfy \
-    Lightx2v/Wan_2_1_T2V_14B_rCM_lora_average_rank_83_bf16.safetensors \
-    --local-dir /tmp/lora_rcm && \
-    mv /tmp/lora_rcm/Lightx2v/Wan_2_1_T2V_14B_rCM_lora_average_rank_83_bf16.safetensors \
-       $COMFYUI_PATH/models/loras/Wan_2_1_T2V_14B_rCM_lora_average_rank_83_bf16.safetensors && \
-    rm -rf /tmp/lora_rcm
+RUN wget -O $COMFYUI_PATH/models/loras/Wan_2_1_T2V_14B_rCM_lora_average_rank_83_bf16.safetensors \
+    "https://huggingface.co/Kijai/WanVideo_comfy/resolve/6654d68213b74e05ca1b89c05d2f1b3f10670a79/LoRAs/rCM/Wan_2_1_T2V_14B_rCM_lora_average_rank_83_bf16.safetensors"
 
 # --- 7. 安装 WanVideo 自定义节点 ---
 # Main WanVideo wrapper
