@@ -47,8 +47,8 @@ RUN mkdir -p \
 
 # --- 6. 下载 WanVideo 模型文件 ---
 # Main I2V model FP8 (for new workflow)
-RUN wget -O $COMFYUI_PATH/models/unet/aniWan2114BFp8E4m3fn_i2v480pNew.safetensors \
-    "https://huggingface.co/Kijai/WanVideo_comfy_fp8_scaled/resolve/main/aniWan2114BFp8E4m3fn_i2v480pNew.safetensors"
+RUN wget -O $COMFYUI_PATH/models/unet/Wan2_1-I2V-14B-480p_fp8_e4m3fn_scaled_KJ.safetensors \
+    "https://huggingface.co/Kijai/WanVideo_comfy_fp8_scaled/resolve/main/I2V/Wan2_1-I2V-14B-480p_fp8_e4m3fn_scaled_KJ.safetensors"
 
 # InfiniteTalk model FP16 (for new workflow)
 RUN /venv/bin/huggingface-cli download Kijai/WanVideo_comfy \

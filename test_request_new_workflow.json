@@ -196,7 +196,7 @@
             "120",
             0
           ],
-          "model": "aniWan2114BFp8E4m3fn_i2v480pNew.safetensors",
+          "model": "Wan2_1-I2V-14B-480p_fp8_e4m3fn_scaled_KJ.safetensors",
           "base_precision": "fp16_fast",
           "quantization": "disabled",
           "load_device": "offload_device",
