@@ -49,6 +49,16 @@ def handler(job):
     if not workflow or not isinstance(workflow, dict):
         return {"error": "输入错误: 'workflow' 键是必需的，且其值必须是一个有效的JSON对象。"}
 
+    # Cleanup: Remove UI-only nodes (Note, MarkdownNote, Reroute, PrimitiveNode)
+    # These nodes are not executable by the backend and can cause validation errors.
+    nodes_to_remove = []
+    for node_id, node_data in workflow.items():
+        if node_data.get("class_type") in ["Note", "MarkdownNote", "Reroute", "PrimitiveNode"]:
+            nodes_to_remove.append(node_id)
+    
+    for node_id in nodes_to_remove:
+        del workflow[node_id]
+
     # 创建输入路径
     input_path = "/root/comfy/ComfyUI/input"
     if not os.path.exists(input_path):
