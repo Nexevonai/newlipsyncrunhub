@@ -1,7 +1,7 @@
 # WanVideo 2.1 InfiniteTalk - RunPod Serverless Project Status
 
-**Last Updated**: 2025-11-09
-**Current Status**: Container build in progress (fixes applied, awaiting build completion)
+**Last Updated**: 2025-11-20
+**Current Status**: Rebuild triggered to refresh image on RunPod (no functional code changes)
 
 ---
 
