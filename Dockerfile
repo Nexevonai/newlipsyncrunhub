@@ -79,15 +79,15 @@ RUN git clone https://github.com/kijai/ComfyUI-WanVideoWrapper.git \
 
 # ComfyUI Layer Style (Required for ImageScaleByAspectRatio)
 RUN git clone https://github.com/chflame163/ComfyUI_LayerStyle.git \
-    $COMFYUI_PATH/custom_nodes/ComfyUI_LayerStyle && \
-    cd $COMFYUI_PATH/custom_nodes/ComfyUI_LayerStyle && \
-    /venv/bin/python -m pip install -r requirements.txt || true
+    $COMFYUI_PATH/custom_nodes/ComfyUI_LayerStyle
+RUN cd $COMFYUI_PATH/custom_nodes/ComfyUI_LayerStyle && \
+    (/venv/bin/python -m pip install -r requirements.txt || echo "Warning: LayerStyle requirements failed to install")
 
 # ComfyUI JW Nodes (Required for JWInteger/JWFloat)
 RUN git clone https://github.com/StartHua/ComfyUI_JWNodes.git \
-    $COMFYUI_PATH/custom_nodes/ComfyUI_JWNodes && \
-    cd $COMFYUI_PATH/custom_nodes/ComfyUI_JWNodes && \
-    /venv/bin/python -m pip install -r requirements.txt || true
+    $COMFYUI_PATH/custom_nodes/ComfyUI_JWNodes
+RUN cd $COMFYUI_PATH/custom_nodes/ComfyUI_JWNodes && \
+    (/venv/bin/python -m pip install -r requirements.txt || echo "Warning: JWNodes requirements failed to install")
 
 # Comfyroll Custom Nodes (Required for CR Prompt Text)
 RUN git clone https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes.git \
