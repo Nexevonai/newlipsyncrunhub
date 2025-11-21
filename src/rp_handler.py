@@ -51,9 +51,10 @@ def handler(job):
 
     # Cleanup: Remove UI-only nodes (Note, MarkdownNote, Reroute, PrimitiveNode)
     # These nodes are not executable by the backend and can cause validation errors.
+    # IMPORTANT: We do NOT remove PrimitiveNode anymore because we replaced JWInteger with it.
     nodes_to_remove = []
     for node_id, node_data in workflow.items():
-        if node_data.get("class_type") in ["Note", "MarkdownNote", "Reroute", "PrimitiveNode"]:
+        if node_data.get("class_type") in ["Note", "MarkdownNote", "Reroute"]:
             nodes_to_remove.append(node_id)
     
     for node_id in nodes_to_remove:
@@ -115,37 +116,40 @@ def handler(job):
         else:
             return {"error": "提供了 'audio_url' 但在工作流中找不到 'LoadAudio' 节点。"}
 
-    # 4. (可选) 如果提供了 width/height，就自动处理输出尺寸
-    if 'width' in job_input or 'height' in job_input:
-        width_value = int(job_input.get('width', 1280))
-        height_value = int(job_input.get('height', 720))
+    # 4. (可选) 如果提供了 width/height/num_frames，就自动处理输出尺寸和帧数
+    # 针对 Infinite+Talk V4 工作流的特定节点 ID 处理
+    if 'width' in job_input:
+        width_value = int(job_input.get('width'))
+        # Node 312 是 scaling length (原 JWInteger, 现 PrimitiveNode)
+        if "312" in workflow:
+            if workflow["312"].get("class_type") in ["PrimitiveNode", "JWInteger"]:
+                workflow["312"]["inputs"]["value"] = width_value
+                print(f"Set Node 312 (Scale Length) to {width_value}")
         
-        # 尝试找到 WanVideoImageToVideoMultiTalk 节点并直接设置
-        wan_video_node_found = False
+        # 同时更新 WanVideo 节点作为备份 (如果 link 断了)
         for node_id, node_data in workflow.items():
             if node_data.get("class_type") == "WanVideoImageToVideoMultiTalk":
-                if 'width' in job_input:
-                    workflow[node_id]["inputs"]["width"] = width_value
-                if 'height' in job_input:
-                    workflow[node_id]["inputs"]["height"] = height_value
-                print(f"直接在 WanVideoImageToVideoMultiTalk 节点设置分辨率: {width_value}x{height_value}")
-                wan_video_node_found = True
-                break
+                workflow[node_id]["inputs"]["width"] = width_value
+
+    if 'height' in job_input:
+        height_value = int(job_input.get('height'))
+        # WanVideo 节点
+        for node_id, node_data in workflow.items():
+            if node_data.get("class_type") == "WanVideoImageToVideoMultiTalk":
+                workflow[node_id]["inputs"]["height"] = height_value
+
+    if 'num_frames' in job_input:
+        frames_value = int(job_input.get('num_frames'))
+        # Node 308 是 num_frames (原 JWInteger, 现 PrimitiveNode)
+        if "308" in workflow:
+            if workflow["308"].get("class_type") in ["PrimitiveNode", "JWInteger"]:
+                workflow["308"]["inputs"]["value"] = frames_value
+                print(f"Set Node 308 (Num Frames) to {frames_value}")
         
-        # 如果没找到特定节点，尝试查找 INTConstant (旧逻辑兼容)
-        if not wan_video_node_found:
-            if 'width' in job_input:
-                for node_id, node_data in workflow.items():
-                    if (node_data.get("class_type") == "INTConstant" and
-                        node_data.get("_meta", {}).get("title") == "Width"):
-                        workflow[node_id]["inputs"]["value"] = width_value
-                        break
-            if 'height' in job_input:
-                for node_id, node_data in workflow.items():
-                    if (node_data.get("class_type") == "INTConstant" and
-                        node_data.get("_meta", {}).get("title") == "Height"):
-                        workflow[node_id]["inputs"]["value"] = height_value
-                        break
+        # 同时也更新 MultiTalkWav2VecEmbeds 作为备份
+        for node_id, node_data in workflow.items():
+            if node_data.get("class_type") == "MultiTalkWav2VecEmbeds":
+                workflow[node_id]["inputs"]["num_frames"] = frames_value
 
     # 5. 找到最终的输出节点 (VHS_VideoCombine)
     output_node_id = None

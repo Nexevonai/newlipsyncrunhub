@@ -83,17 +83,10 @@ RUN git clone https://github.com/chflame163/ComfyUI_LayerStyle.git \
 RUN cd $COMFYUI_PATH/custom_nodes/ComfyUI_LayerStyle && \
     (/venv/bin/python -m pip install -r requirements.txt || echo "Warning: LayerStyle requirements failed to install")
 
-# ComfyUI JW Nodes (Required for JWInteger/JWFloat)
-RUN git clone https://github.com/StartHua/ComfyUI_JWNodes.git \
-    $COMFYUI_PATH/custom_nodes/ComfyUI_JWNodes || \
-    (echo "Failed to clone JWNodes, trying fallback..." && \
-    mkdir -p $COMFYUI_PATH/custom_nodes/ComfyUI_JWNodes && \
-    wget -O $COMFYUI_PATH/custom_nodes/ComfyUI_JWNodes/archive.zip https://github.com/StartHua/ComfyUI_JWNodes/archive/refs/heads/main.zip && \
-    unzip $COMFYUI_PATH/custom_nodes/ComfyUI_JWNodes/archive.zip -d $COMFYUI_PATH/custom_nodes/ComfyUI_JWNodes && \
-    mv $COMFYUI_PATH/custom_nodes/ComfyUI_JWNodes/ComfyUI_JWNodes-main/* $COMFYUI_PATH/custom_nodes/ComfyUI_JWNodes/ && \
-    rm -rf $COMFYUI_PATH/custom_nodes/ComfyUI_JWNodes/archive.zip $COMFYUI_PATH/custom_nodes/ComfyUI_JWNodes/ComfyUI_JWNodes-main)
-RUN cd $COMFYUI_PATH/custom_nodes/ComfyUI_JWNodes && \
-    (/venv/bin/python -m pip install -r requirements.txt || echo "Warning: JWNodes requirements failed to install")
+# ComfyUI JW Nodes (REMOVED: Repo deleted, functionality replaced by PrimitiveNode)
+# But we install "comfyui-various" just in case the user wants to use the original nodes
+RUN git clone https://github.com/jamesWalker55/comfyui-various.git \
+    $COMFYUI_PATH/custom_nodes/comfyui-various
 
 # Comfyroll Custom Nodes (Required for CR Prompt Text)
 RUN git clone https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes.git \
