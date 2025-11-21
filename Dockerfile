@@ -85,7 +85,13 @@ RUN cd $COMFYUI_PATH/custom_nodes/ComfyUI_LayerStyle && \
 
 # ComfyUI JW Nodes (Required for JWInteger/JWFloat)
 RUN git clone https://github.com/StartHua/ComfyUI_JWNodes.git \
-    $COMFYUI_PATH/custom_nodes/ComfyUI_JWNodes
+    $COMFYUI_PATH/custom_nodes/ComfyUI_JWNodes || \
+    (echo "Failed to clone JWNodes, trying fallback..." && \
+    mkdir -p $COMFYUI_PATH/custom_nodes/ComfyUI_JWNodes && \
+    wget -O $COMFYUI_PATH/custom_nodes/ComfyUI_JWNodes/archive.zip https://github.com/StartHua/ComfyUI_JWNodes/archive/refs/heads/main.zip && \
+    unzip $COMFYUI_PATH/custom_nodes/ComfyUI_JWNodes/archive.zip -d $COMFYUI_PATH/custom_nodes/ComfyUI_JWNodes && \
+    mv $COMFYUI_PATH/custom_nodes/ComfyUI_JWNodes/ComfyUI_JWNodes-main/* $COMFYUI_PATH/custom_nodes/ComfyUI_JWNodes/ && \
+    rm -rf $COMFYUI_PATH/custom_nodes/ComfyUI_JWNodes/archive.zip $COMFYUI_PATH/custom_nodes/ComfyUI_JWNodes/ComfyUI_JWNodes-main)
 RUN cd $COMFYUI_PATH/custom_nodes/ComfyUI_JWNodes && \
     (/venv/bin/python -m pip install -r requirements.txt || echo "Warning: JWNodes requirements failed to install")
 
